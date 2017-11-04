@@ -1,0 +1,38 @@
+### SBT ###
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+
+### Scala ###
+*.class
+*.log
+
+### idea ###
+*.iml
+*.ipr
+*.iws
+.idea
+out
+
+### vim ###
+tags
+.*.swp
+.*.swo
+
+### Eclipse ###
+build
+.classpath
+.project
+.settings
+org.scala-ide.sdt.core/META-INF/MANIFEST.MF
+org.scala-ide.sdt.update-site/site.xml`
+
+### OSX ###
+.DS_Store
+
