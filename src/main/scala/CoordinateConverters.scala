@@ -1,5 +1,6 @@
 package com.S2Utilities.converters
 
+import com.S2Utilities.s2.S2Utilities
 import com.google.common.geometry.{S2Cell, S2CellId, S2LatLng}
 import com.vividsolutions.jts.geom.{Coordinate, Point}
 
@@ -115,18 +116,18 @@ object CoordinateConverters
     this.lonLatToS2Cell(point.getX, point.getX, lvl)
   }
 
-  def lonLatToS2CellToken(lon: Double, lat: Double, lvl: Int): String =
+  def lonLatToS2CellFullToken(lon: Double, lat: Double, lvl: Int): String =
   {
-    BigInt.long2bigInt(this.lonLatToS2CellID(lon, lat, lvl).id).toString
+    S2Utilities.getS2CellFullToken(this.lonLatToS2CellID(lon, lat, lvl))
   }
   // x = lon, y=lat
-  def coordinateToS2CellToken(coordinate: Coordinate, lvl: Int): String =
+  def coordinateToS2CellFullToken(coordinate: Coordinate, lvl: Int): String =
   {
-    this.lonLatToS2CellToken(coordinate.x, coordinate.y, lvl)
+    this.lonLatToS2CellFullToken(coordinate.x, coordinate.y, lvl)
   }
-  def pointToS2CellToken(point: Point, lvl: Int): String =
+  def pointToS2CellFullToken(point: Point, lvl: Int): String =
   {
-    this.lonLatToS2CellToken(point.getX, point.getX, lvl)
+    this.lonLatToS2CellFullToken(point.getX, point.getX, lvl)
   }
 
 }

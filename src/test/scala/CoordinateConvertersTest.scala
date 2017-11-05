@@ -78,7 +78,7 @@ class CoordinateConvertersTest extends FlatSpec
   "lonLatToS2CellToken" should "Converts a longitude and latitude to S2Cell object" in
   {
     val expectedOutput = this.s2CellToken
-    val observedOutput = CoordinateConverters.lonLatToS2CellToken(this.cartesianCoordinates2d._1,
+    val observedOutput = CoordinateConverters.lonLatToS2CellFullToken(this.cartesianCoordinates2d._1,
       this.cartesianCoordinates2d._2, this.s2lvl)
 
     observedOutput should equal (expectedOutput)
