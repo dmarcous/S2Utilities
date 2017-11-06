@@ -3,6 +3,7 @@ package com.S2Utilities.geo
 import com.S2Utilities.converters.UnitConverters
 import com.vividsolutions.jts.geom._
 import com.vividsolutions.jts.io.{WKBReader, WKBWriter, WKTReader, WKTWriter}
+import com.vividsolutions.jts.simplify.TopologyPreservingSimplifier
 
 object GeographyUtilities
 {
@@ -58,6 +59,26 @@ object GeographyUtilities
   def haversineDistance(point1: Point, point2: Point): Double =
     this.haversineDistance(point1.getX, point1.getY, point2.getX, point2.getY)
 
-  // TODO : simplify
+  def simplifyGeometry(geometry: Geometry, metersTolerance: Double = 5.0): Geometry =
+  {
+    TopologyPreservingSimplifier.simplify(
+      (geometry.convexHull().buffer(UnitConverters.metricToAngularDistance(metersTolerance/2))) ,
+      UnitConverters.metricToAngularDistance(metersTolerance))
+  }
+
+  def mergeCoordinates(coordinates: Array[Coordinate], gf: GeometryFactory, metersTolerance: Double = 5.0): Geometry =
+  {
+    this.simplifyGeometry(gf.createPolygon(coordinates), metersTolerance)
+  }
+  def mergeCoordinates(coordinates: Array[Point], gf: GeometryFactory, metersTolerance: Double = 5.0): Geometry =
+  {
+    this.simplifyGeometry(gf.createMultiPoint(coordinates).getBoundary, metersTolerance)
+  }
+  // coordinates = [(lon, lat)]
+  def mergeCoordinates(coordinates: Array[(Double, Double)], gf: GeometryFactory, metersTolerance: Double = 5.0): Geometry =
+  {
+    val geoCoordinates = coordinates.map{case (lon, lat) => new Coordinate(x=lon, y=lat)}
+    this.mergeCoordinates(geoCoordinates, gf, metersTolerance)
+  }
 
 }
