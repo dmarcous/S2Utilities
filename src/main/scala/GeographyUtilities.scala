@@ -10,11 +10,13 @@ object GeographyUtilities
   // Use degrees SRID used by common GPS (WGS84)
   val SRID : Int = 4326
 
+  // Create a new geography factory object to be used for other geo functions
   def createGeometryFactory() : GeometryFactory =
   {
     new GeometryFactory(new PrecisionModel(PrecisionModel.maximumPreciseValue), this.SRID)
   }
 
+  // Convert WKT strings to a geometry object
   def WKTtoGeometry(WKT: String, gf: GeometryFactory) : Geometry =
   {
     val reader = new WKTReader(gf)
@@ -66,18 +68,18 @@ object GeographyUtilities
       UnitConverters.metricToAngularDistance(metersTolerance))
   }
 
-  def mergeCoordinates(coordinates: Array[Coordinate], gf: GeometryFactory, metersTolerance: Double = 5.0): Geometry =
+  def mergeCoordinates(coordinates: Array[Coordinate], gf: GeometryFactory, metersTolerance: Double): Geometry =
   {
     this.simplifyGeometry(gf.createPolygon(coordinates), metersTolerance)
   }
-  def mergeCoordinates(coordinates: Array[Point], gf: GeometryFactory, metersTolerance: Double = 5.0): Geometry =
+  def mergeCoordinates(coordinates: Array[Point], gf: GeometryFactory, metersTolerance: Double): Geometry =
   {
     this.simplifyGeometry(gf.createMultiPoint(coordinates).getBoundary, metersTolerance)
   }
   // coordinates = [(lon, lat)]
   def mergeCoordinates(coordinates: Array[(Double, Double)], gf: GeometryFactory, metersTolerance: Double = 5.0): Geometry =
   {
-    val geoCoordinates = coordinates.map{case (lon, lat) => new Coordinate(x=lon, y=lat)}
+    val geoCoordinates = coordinates.map{case(lon: Double, lat: Double) => new Coordinate(lon, lat)}
     this.mergeCoordinates(geoCoordinates, gf, metersTolerance)
   }
 
