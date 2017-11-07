@@ -23,18 +23,21 @@ object GeographyUtilities
     reader.read(WKT)
   }
 
+  // Convert WKB representation of a geometry object
   def WKBtoGeometry(WKB: Array[Byte], gf: GeometryFactory) : Geometry =
   {
     val reader = new WKBReader(gf)
     reader.read(WKB)
   }
 
+  // Create a WKT representation of a geometry
   def geometryToWKT(geometry: Geometry) : String =
   {
     val writer = new WKTWriter()
     writer.write(geometry)
   }
 
+  // Create a WKB representation of a geometry
   def geometryToWKB(geometry: Geometry) : Array[Byte] =
   {
     val writer = new WKBWriter()
@@ -49,7 +52,7 @@ object GeographyUtilities
     val dLon = (lon2 - lon1).toRadians
 
     val a = math.pow(math.sin(dLat / 2), 2) +
-      (math.cos(lat1) * math.cos(lat2) * math.pow(math.sin(dLon / 2), 2))
+      (math.cos(lat1.toRadians) * math.cos(lat2.toRadians) * math.pow(math.sin(dLon / 2), 2))
     val c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
     c * UnitConverters.EARTH_RADIUS_METERS
@@ -61,20 +64,29 @@ object GeographyUtilities
   def haversineDistance(point1: Point, point2: Point): Double =
     this.haversineDistance(point1.getX, point1.getY, point2.getX, point2.getY)
 
+  // Get a simplified expanded geometry, close to the original one
   def simplifyGeometry(geometry: Geometry, metersTolerance: Double = 5.0): Geometry =
   {
     TopologyPreservingSimplifier.simplify(
       (geometry.convexHull().buffer(UnitConverters.metricToAngularDistance(metersTolerance/2))) ,
-      UnitConverters.metricToAngularDistance(metersTolerance))
+      UnitConverters.metricToAngularDistance(metersTolerance/2))
+  }
+  // Get a rectangular simplified expanded geometry, close to the original one
+  def boxSimplifyGeometry(geometry: Geometry, metersTolerance: Double = 5.0): Geometry =
+  {
+    TopologyPreservingSimplifier.simplify(
+      (geometry.getEnvelope.buffer(UnitConverters.metricToAngularDistance(metersTolerance/2))) ,
+      UnitConverters.metricToAngularDistance(metersTolerance/2))
   }
 
+  // Merge multiple coordinates into a single simplified geometry
   def mergeCoordinates(coordinates: Array[Coordinate], gf: GeometryFactory, metersTolerance: Double): Geometry =
   {
     this.simplifyGeometry(gf.createPolygon(coordinates), metersTolerance)
   }
   def mergeCoordinates(coordinates: Array[Point], gf: GeometryFactory, metersTolerance: Double): Geometry =
   {
-    this.simplifyGeometry(gf.createMultiPoint(coordinates).getBoundary, metersTolerance)
+    this.simplifyGeometry(gf.createMultiPoint(coordinates).convexHull, metersTolerance)
   }
   // coordinates = [(lon, lat)]
   def mergeCoordinates(coordinates: Array[(Double, Double)], gf: GeometryFactory, metersTolerance: Double = 5.0): Geometry =
@@ -82,5 +94,4 @@ object GeographyUtilities
     val geoCoordinates = coordinates.map{case(lon: Double, lat: Double) => new Coordinate(lon, lat)}
     this.mergeCoordinates(geoCoordinates, gf, metersTolerance)
   }
-
 }
