@@ -1,4 +1,4 @@
-package com.S2Utilities.converters
+package com.s2utils.converters
 
 object UnitConverters
 {

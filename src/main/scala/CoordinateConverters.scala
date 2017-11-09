@@ -1,6 +1,6 @@
-package com.S2Utilities.converters
+package com.s2utils.converters
 
-import com.S2Utilities.s2.S2Utilities
+import com.s2utils.s2.S2Utilities
 import com.google.common.geometry.{S2Cell, S2CellId, S2LatLng}
 import com.vividsolutions.jts.geom.{Coordinate, Point}
 

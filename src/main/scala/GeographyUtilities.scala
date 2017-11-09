@@ -1,6 +1,6 @@
-package com.S2Utilities.geo
+package com.s2utils.geo
 
-import com.S2Utilities.converters.UnitConverters
+import com.s2utils.converters.UnitConverters
 import com.vividsolutions.jts.geom._
 import com.vividsolutions.jts.io.{WKBReader, WKBWriter, WKTReader, WKTWriter}
 import com.vividsolutions.jts.simplify.TopologyPreservingSimplifier

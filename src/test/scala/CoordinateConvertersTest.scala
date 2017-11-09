@@ -1,22 +1,22 @@
-package com.S2Utilities.converters
+package com.s2utils.converters
 
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 
 class CoordinateConvertersTest extends FlatSpec
 {
-  val cartesianCoordinates2d : (Double, Double) = (32.0718015, 34.777112)
-  val adjustedCartesianCoordinates3d : (Double, Double, Double) = (0.6960213,0.4361361,0.5703854)
-  val cartesianCoordinates3d : (Double, Double, Double) = (32.0718015, 34.777112, 33.3333)
-  val radianCoordinates3d : (Double, Double, Double) = (57.871900, 0.956988, 0.825845)
-  val adjustedRadianCoordinates2d : (Double, Double) = (0.559758, 0.4881245)
-  val s2CellId = 1506371315630604288L
-  val s2CellToken = "1506371315630604288"
+  val cartesianCoordinates2d : (Double, Double) = (34.777112, 32.0718015)
+  val adjustedCartesianCoordinates3d : (Double, Double, Double) = (0.6960213, 0.4833351, 0.530981)
+  val cartesianCoordinates3d : (Double, Double, Double) = (34.777112, 32.0718015, 33.3333)
+  val radianCoordinates3d : (Double, Double, Double) = (57.871900, 0.956988, 0.744951)
+  val adjustedRadianCoordinates2d : (Double, Double) = (0.606975, 0.518359)
+  val s2CellId = 1521455257954025472L
+  val s2CellToken = "1521455257954025472"
   val s2lvl = 14
 
   val Eps = 1e-4
 
-  "radianCoordinatesTocartesianCoordinates" should "Convert radian coordinates to degree coordinates" in
+  "radianCoordinatesToCartesianCoordinates" should "Convert radian coordinates to degree coordinates" in
   {
     val expectedOutput = this.cartesianCoordinates3d
     val observedOutput = CoordinateConverters.radianCoordinatesToCartesianCoordinates(this.radianCoordinates3d)

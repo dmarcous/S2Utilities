@@ -1,4 +1,4 @@
-package com.S2Utilities.geo
+package com.s2utils.geo
 
 import com.vividsolutions.jts.geom.{Coordinate, GeometryFactory, Point, Polygon}
 import org.scalatest.FlatSpec
@@ -8,12 +8,12 @@ class GeographyUtilitiesTest extends FlatSpec
 {
   val Eps = 1e-4
   val gf: GeometryFactory = GeographyUtilities.createGeometryFactory()
-  val lon1 = 32.071801
-  val lat1 = 34.777112
-  val lon2 = 32.074929
-  val lat2 = 34.775912
+  val lon1 = 34.777112
+  val lat1 = 32.071801
+  val lon2 = 34.775912
+  val lat2 = 32.074929
   val metersTolerance = 5.0
-  val geomPoint: Point = this.gf.createPoint(new Coordinate(32.0718015, 34.777112))
+  val geomPoint: Point = this.gf.createPoint(new Coordinate(34.777112, 32.0718015))
   val coordArray: Array[Coordinate] = Array[Coordinate](
     new Coordinate(34.77902663579209, 32.07188370752443),
     new Coordinate(34.77835901861101, 32.072536041862776),
@@ -70,8 +70,8 @@ class GeographyUtilitiesTest extends FlatSpec
     new Coordinate(34.778364513861206, 32.073435982987526), new Coordinate(34.78011288787219, 32.073435982987526),
     new Coordinate(34.78011288787219, 32.07188596703126), new Coordinate(34.778380393981934, 32.07187938926988)))
   val WKBPoint: Array[Byte] =
-    Array[Byte](0, 0, 0, 0, 1, 64, 64, 9, 48, -54, -93, 38, -31, 64, 65, 99, 120, 103, -16, -86, 34)
-  val WKTPoint: String = "POINT (32.0718015 34.777112)"
+    Array[Byte](0, 0, 0, 0, 1, 64, 65, 99, 120, 103, -16, -86, 34, 64, 64, 9, 48, -54, -93, 38, -31)
+  val WKTPoint: String = "POINT (34.777112 32.0718015)"
   val WKTPolygon: String = "POLYGON ((34.7787880897522 32.07328373362353, 34.778380393981934 32.072529153467684, " +
     "34.77901339530945 32.071901847151985, 34.780097007751465 32.0726927978857, " +
     "34.77942109107971 32.0734201028668, 34.7787880897522 32.07328373362353))"
@@ -130,9 +130,8 @@ class GeographyUtilitiesTest extends FlatSpec
 
   "haversineDistance" should "Calculate the haversine (sphere / geo) distance between 2 coordinates" in
   {
-    val expectedOutput = 315.66942
+    val expectedOutput = 366.14388
     val observedOutput = GeographyUtilities.haversineDistance(this.lon1, this.lat1, this.lon2, this.lat2)
-    print(observedOutput )
 
     observedOutput should equal(expectedOutput +- this.Eps)
   }
