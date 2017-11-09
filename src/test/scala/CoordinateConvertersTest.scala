@@ -51,7 +51,7 @@ class CoordinateConvertersTest extends FlatSpec
   {
     val expectedOutput = this.adjustedRadianCoordinates2d
     val observedOutput =
-      CoordinateConverters.adjusted3dCartesianCoordiantesTo2dRadianCoordiantes(this.adjustedCartesianCoordinates3d)
+      CoordinateConverters.adjusted3dCartesianCoordinatesTo2dRadianCoordinates(this.adjustedCartesianCoordinates3d)
 
     observedOutput._1 should equal (expectedOutput._1 +- this.Eps)
     observedOutput._2 should equal (expectedOutput._2 +- this.Eps)
