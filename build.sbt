@@ -15,4 +15,4 @@ libraryDependencies += "io.sgr" % "s2-geometry-library-java" % "1.0.0"
 
 // Enable sbt-ghpages to create a github site for docs
 enablePlugins(GhpagesPlugin)
-git.remoteRepo := "git@github.com:dmarcous/S2Utilites.git"
+git.remoteRepo := "git@github.com:dmarcous/S2Utilities.git"
