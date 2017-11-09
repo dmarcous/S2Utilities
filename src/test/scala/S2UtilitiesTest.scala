@@ -1,7 +1,7 @@
-package com.s2utils.s2
+package com.github.dmarcous.s2utils.s2
 
 import com.google.common.geometry.S2CellId
-import com.s2utils.converters.CoordinateConverters
+import com.github.dmarcous.s2utils.converters.CoordinateConverters
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 

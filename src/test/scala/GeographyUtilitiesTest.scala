@@ -1,4 +1,4 @@
-package com.s2utils.geo
+package com.github.dmarcous.s2utils.geo
 
 import com.vividsolutions.jts.geom.{Coordinate, GeometryFactory, Point, Polygon}
 import org.scalatest.FlatSpec

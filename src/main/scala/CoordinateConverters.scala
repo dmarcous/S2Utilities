@@ -1,15 +1,23 @@
-package com.s2utils.converters
+package com.github.dmarcous.s2utils.converters
 
-import com.s2utils.s2.S2Utilities
+import com.github.dmarcous.s2utils.s2.S2Utilities
 import com.google.common.geometry.{S2Cell, S2CellId, S2LatLng}
 import com.vividsolutions.jts.geom.{Coordinate, Point}
 
+/** Enclosing objects for [[com.github.dmarcous.s2utils.converters.CoordinateConverters]]
+  * methods for converting coordinate objects. */
 object CoordinateConverters
 {
 
-  // Convert radian coordinates to degree coordinates
-  // inclination = theta
-  // azimuth = phi
+  /** Convert radian coordinates to degree coordinates
+    * inclination = theta
+    * azimuth = phi
+    *
+    *  @param radius radius length
+    *  @param inclination inclination angle (theta)
+    *  @param azimuth azimuth angle (phi)
+    *  @return Cartesian coordinates tuple (x, y, z)
+    */
   def radianCoordinatesToCartesianCoordinates(radius: Double, inclination: Double, azimuth: Double) :
     (Double, Double, Double) =
   {

@@ -1,4 +1,4 @@
-package com.s2utils.s2
+package com.github.dmarcous.s2utils.s2
 
 import collection.JavaConverters._
 import com.google.common.geometry.{S2Cell, S2CellId}
