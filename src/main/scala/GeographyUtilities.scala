@@ -6,7 +6,7 @@ import com.vividsolutions.jts.io.{WKBReader, WKBWriter, WKTReader, WKTWriter}
 import com.vividsolutions.jts.simplify.TopologyPreservingSimplifier
 
 /** Enclosing objects for [[com.github.dmarcous.s2utils.geo.GeographyUtilities]]
-  * methods for handling [[com.vividsolutions.jts.geom.Geometry]] objects. */
+  * methods for handling jts Geometry objects. */
 object GeographyUtilities
 {
   // Use degrees SRID used by common GPS (WGS84)
