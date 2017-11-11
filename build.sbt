@@ -18,3 +18,22 @@ enablePlugins(GhpagesPlugin)
 git.remoteRepo := "https://github.com/dmarcous/S2Utilities"
 
 enablePlugins(SiteScaladocPlugin)
+
+// POM settings for Sonatype
+homepage := Some(url("https://github.com/dmarcous/S2Utilities"))
+scmInfo := Some(ScmInfo(url("https://github.com/dmarcous/S2Utilities"),
+  "git@github.com:dmarcous/S2Utilities.git"))
+developers := List(Developer("dmarcous",
+  "Daniel Marcous",
+  "dmarcous@gmail.com",
+  url("https://github.com/dmarcous")))
+licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
+pomIncludeRepository := (_ => false)
+publishMavenStyle := true
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value)
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+}
