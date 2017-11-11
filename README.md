@@ -14,7 +14,7 @@ The current stable version is 1.0.0, which is cross-built against Scala 2.11.x a
 If you're using SBT, add the following line to your build file:
 
 ```scala
-libraryDependencies += "com.github.dmarcous.s2utils" %% "S2Utilities" % "1.0.0"
+libraryDependencies += "com.github.dmarcous" %% "s2utils_2.12" % "1.0.0"
 ```
 
 For Maven and other build tools, you can visit [search.maven.org](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.scalaz%22%20AND%20v%3A%227.2.16%22).

@@ -1,6 +1,6 @@
-name := "S2Utilities"
+name := "s2utils"
 
-version := "0.1"
+version := "1.0.0"
 
 scalaVersion := "2.12.4"
 
@@ -20,9 +20,11 @@ git.remoteRepo := "https://github.com/dmarcous/S2Utilities"
 enablePlugins(SiteScaladocPlugin)
 
 // POM settings for Sonatype
+organization := "com.github.dmarcous"
+sonatypeProfileName := "com.github.dmarcous"
 homepage := Some(url("https://github.com/dmarcous/S2Utilities"))
 scmInfo := Some(ScmInfo(url("https://github.com/dmarcous/S2Utilities"),
-  "git@github.com:dmarcous/S2Utilities.git"))
+  "scm:git@github.com:dmarcous/S2Utilities.git"))
 developers := List(Developer("dmarcous",
   "Daniel Marcous",
   "dmarcous@gmail.com",
