@@ -1,4 +1,4 @@
-# S2Utilites
+# S2Utilities
 
 This projects aims at providing a set of tools to make working with geospatial objects quick and painless.
 These tools were designed with S2 objects (Google's "geometry on a sphere" abstractions) in mind as the leading data structure to be used when working with geospatial data.
