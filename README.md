@@ -9,12 +9,12 @@ These tools were designed with S2 objects (Google's "geometry on a sphere" abstr
 
 ## Getting S2Utilites
 
-The current stable version is 1.0.0, which is cross-built against Scala 2.11.x and 2.12.x.
+The current stable version is 1.1.0, which is cross-built against Scala 2.11.x and 2.12.x.
 
 If you're using SBT, add the following line to your build file:
 
 ```scala
-libraryDependencies += "com.github.dmarcous" %% "s2utils_2.12" % "1.0.0"
+libraryDependencies += "com.github.dmarcous" %% "s2utils_2.12" % "1.1.0"
 ```
 
 For Maven and other build tools, you can visit [search.maven.org](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.dmarcous%22%20AND%20a%3A%22s2utils_2.12%22).
