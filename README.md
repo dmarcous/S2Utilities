@@ -17,8 +17,7 @@ If you're using SBT, add the following line to your build file:
 libraryDependencies += "com.github.dmarcous" %% "s2utils_2.12" % "1.0.0"
 ```
 
-For Maven and other build tools, you can visit [search.maven.org](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.scalaz%22%20AND%20v%3A%227.2.16%22).
-(This search will also list all available modules of scalaz.)
+For Maven and other build tools, you can visit [search.maven.org](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.dmarcous%22%20AND%20a%3A%22s2utils_2.12%22).
 
 
 ## Quick Start
