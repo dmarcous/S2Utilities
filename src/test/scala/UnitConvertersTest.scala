@@ -9,6 +9,8 @@ class UnitConvertersTest extends FlatSpec
   val radians = 1.6580628
   val metersDistance = 199.929805
   val anglesDistance = 0.001796
+  val metersArea = 79172.67
+  val unitSphereArea = 2.4547792030917305E-9
 
   val Eps = 1e-4
 
@@ -40,6 +42,22 @@ class UnitConvertersTest extends FlatSpec
   {
     val expectedOutput = this.metersDistance
     val observedOutput = UnitConverters.angularToMetricDistance(this.anglesDistance)
+
+    observedOutput should equal (expectedOutput +- this.Eps)
+  }
+
+  "metricToUnitSphereArea" should "Convert metric area to unit sphere area" in
+  {
+    val expectedOutput = this.unitSphereArea
+    val observedOutput = UnitConverters.metricToUnitSphereArea(this.metersArea)
+
+    observedOutput should equal (expectedOutput +- this.Eps)
+  }
+
+  "unitSphereToMetricArea" should "Convert unit sphere area to metric area" in
+  {
+    val expectedOutput = this.metersArea
+    val observedOutput = UnitConverters.unitSphereToMetricArea(this.unitSphereArea)
 
     observedOutput should equal (expectedOutput +- this.Eps)
   }

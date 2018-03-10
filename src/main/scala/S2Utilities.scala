@@ -1,7 +1,10 @@
 package com.github.dmarcous.s2utils.s2
 
+import com.github.dmarcous.s2utils.converters.UnitConverters
+
 import collection.JavaConverters._
-import com.google.common.geometry.{S2Cell, S2CellId}
+import com.google.common.geometry.{S2Cell, S2CellId, S2Projections}
+
 import scala.collection.mutable.ListBuffer
 
 /** Enclosing objects for [[com.github.dmarcous.s2utils.s2.S2Utilities]]
@@ -78,6 +81,16 @@ object S2Utilities
   def getCellCenter(cellToken : String): (Double, Double) =
   {
     this.getCellCenter(this.getS2CellIdFromFullToken(cellToken))
+  }
+
+  /** Get minimum cell level enclosing this metric area (level)
+    *
+    *  @param metricArea area in squared meters to be contained by returned level
+    *  @return minimum cell level enclosing this metric area, such that each cell is approximately this area.
+    */
+  def getLevelForArea(metricArea : Double): (Int) =
+  {
+    S2Projections.MIN_AREA.getClosestLevel(UnitConverters.metricToUnitSphereArea(metricArea))
   }
 
   /** Get a list of all cell's immediate neighbours on the same level

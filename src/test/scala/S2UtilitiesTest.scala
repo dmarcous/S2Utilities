@@ -1,7 +1,7 @@
 package com.github.dmarcous.s2utils.s2
 
-import com.google.common.geometry.S2CellId
-import com.github.dmarcous.s2utils.converters.CoordinateConverters
+import com.google.common.geometry.{S2CellId}
+import com.github.dmarcous.s2utils.converters.{CoordinateConverters}
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 
@@ -40,6 +40,10 @@ class S2UtilitiesTest extends FlatSpec
       "1521455263322734592",
       "1521455271912669184"
     )
+  val smallMetricArea = 150.0
+  val smallAreaMinimumLvl = 19
+  val largeMetricArea = 500.0
+  val largeAreaMinimumLvl = 18
 
 
   "getS2CellFullToken" should "Get cell unique string representation (= full token)" in
@@ -93,6 +97,21 @@ class S2UtilitiesTest extends FlatSpec
   {
     val expectedOutput = this.cellNeighboursTokens
     val observedOutput = S2Utilities.getAllCellNeighboursTokens(this.cellTokenL15)
+
+    observedOutput should equal(expectedOutput)
+  }
+
+  "getLevelForArea" should "Get the level enclosing minimally enclosing the given area for a large area" in
+  {
+    val expectedOutput = this.largeAreaMinimumLvl
+    val observedOutput = S2Utilities.getLevelForArea(this.largeMetricArea)
+
+    observedOutput should equal(expectedOutput)
+  }
+  it should "Get the level enclosing minimally enclosing the given area for a small area" in
+  {
+    val expectedOutput = this.smallAreaMinimumLvl
+    val observedOutput = S2Utilities.getLevelForArea(this.smallMetricArea)
 
     observedOutput should equal(expectedOutput)
   }
