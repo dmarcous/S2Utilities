@@ -3,10 +3,10 @@ name := "s2utils"
 version := "1.1.1"
 
 scalaVersion := "2.12.4"
-crossScalaVersions := Seq("2.10.5", "2.11.8", "2.12.4")
+crossScalaVersions := Seq("2.11.8", "2.12.4")
 
 // Testing framework
-libraryDependencies += "org.scalatest" % "scalatest_2.12" % "3.0.+" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.+" % "test"
 
 // Geometry objects
 libraryDependencies += "com.vividsolutions" % "jts" % "1.13"
