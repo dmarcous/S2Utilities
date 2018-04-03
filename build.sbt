@@ -60,8 +60,8 @@ releaseProcess := Seq[ReleaseStep](
   commitReleaseVersion,
   tagRelease,
   releaseStepCommandAndRemaining("+publishSigned"),
-  setNextVersion,
-  commitNextVersion,
+//  setNextVersion,
+//  commitNextVersion,
   releaseStepCommand("sonatypeReleaseAll"),
   pushChanges
 )
