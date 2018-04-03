@@ -1,6 +1,6 @@
 name := "s2utils"
 
-version := "1.1.0"
+version := "1.1.1"
 
 scalaVersion := "2.12.4"
 crossScalaVersions := Seq("2.10.5", "2.11.8", "2.12.4")
