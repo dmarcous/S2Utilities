@@ -110,7 +110,7 @@ class S2UtilitiesTest extends FlatSpec
   }
   it should "Get the level enclosing minimally enclosing the given area for a small area" in
   {
-    val expectedOutput = this.smallAreaMinimumLvl
+    val expectedOutput = this.smallAreaMinimumLvl 
     val observedOutput = S2Utilities.getLevelForArea(this.smallMetricArea)
 
     observedOutput should equal(expectedOutput)
