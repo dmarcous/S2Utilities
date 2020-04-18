@@ -55,3 +55,9 @@ GeographyUtilities - methods for handling jts geometry objects with ease like WK
 ### s2
 
 S2Utilities - methods for handling S2Cells and related S2 family objects like coordinate to cell/cellId/cellToken converters, and providing quick simple access to cell properties like center point, neighbour cells, parent cells.
+
+## Credits
+
+Written and maintained by :
+
+Daniel Marcous <dmarcous@gmail.com>
